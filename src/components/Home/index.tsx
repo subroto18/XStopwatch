@@ -7,14 +7,14 @@ import Button from "../../ui/Button";
 const Index = () => {
   const { getWord } = useDictionary();
   const [search, setSearch] = useState("");
-  const [result, setResult] = useState("");
+  const [definition, setDefination] = useState("");
 
   const handleClick = () => {
     const res = getWord(search);
     if (res.length > 0) {
-      setResult(res[0].meaning);
+      setDefination(res[0].meaning);
     } else {
-      setResult("Word not found in the dictionary.");
+      setDefination("Word not found in the dictionary.");
     }
   };
   return (
@@ -29,7 +29,7 @@ const Index = () => {
         <Button onClick={handleClick} label="Search" />
       </div>
       <h3 className="word_text">Definition:</h3>
-      <p className="definition">{result}</p>
+      <p className="definition">{definition}</p>
     </Layout>
   );
 };
