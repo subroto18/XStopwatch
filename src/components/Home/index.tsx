@@ -10,15 +10,11 @@ const Index = () => {
   const [result, setResult] = useState("");
 
   const handleClick = () => {
-    if (search) {
-      const res = getWord(search);
-      if (res.length > 0) {
-        setResult(res[0].meaning);
-      } else {
-        setResult("Word not found in the dictionary.");
-      }
+    const res = getWord(search);
+    if (res.length > 0) {
+      setResult(res[0].meaning);
     } else {
-      setResult("");
+      setResult("Word not found in the dictionary.");
     }
   };
   return (
