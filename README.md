@@ -1,124 +1,87 @@
-# 📖 XDictionary
+# Spelling Checker App
 
-**XDictionary** is a simple React application that allows users to search for programming-related terms and instantly see their meanings.
-For example, if a user searches for **React**, the app will display:
-
-> _A JavaScript library for building user interfaces._
-
-This project demonstrates the use of **React Hooks, TypeScript, custom hooks, and mock API data** to build a clean and interactive dictionary search experience.
-
----
+A simple React application that checks spelling and automatically corrects common mistakes as the user types. The app uses a custom dictionary to detect incorrect words and replace them with the correct spelling.
 
 ## 🚀 Features
 
-- 🔎 Search programming terms instantly
-- ⚛️ Built with **React + TypeScript**
-- 🧩 Uses a **custom hook (`useDictionary`)** for data handling
-- 📦 Mock API simulation using local data
-- ⏳ Loading state simulation for API-like behavior
-- ⚠️ Error handling support
-- 💡 Clean and reusable project structure
+- Real-time spelling correction
+- User-friendly interface
+- Built with React and TypeScript
+- Uses a custom dictionary for word correction
+- Lightweight and fast
 
----
+## 🛠️ Technologies Used
 
-## 🛠️ Tech Stack
+- React
+- TypeScript
+- CSS
 
-- **React**
-- **TypeScript**
-- **Vite**
-- **Custom React Hooks**
+## 📖 How It Works
 
----
+1. The user types text into the textarea.
+2. The application checks each word against a predefined dictionary.
+3. If a word is misspelled, the app replaces it with the correct spelling.
+4. The corrected text is displayed instantly.
+
+Example:
+
+Input:
+
+```
+I wrok fot this exampl
+```
+
+Output:
+
+```
+I work for this example
+```
 
 ## 📂 Project Structure
 
 ```
-src
- ├── components
- │   └── Home
- ├── hooks
- │   └── useDictionary.ts
- ├── mockData
- │   └── dictionary.ts
- ├── types
- │   └── index.ts
- ├── pages
- │   └── HomePage.tsx
- └── App.tsx
+src/
+ ├── components/
+ ├── dictionary/
+ │    └── customDictionary.ts
+ ├── App.tsx
+ ├── index.tsx
+ └── styles.css
 ```
 
----
-
-## ⚙️ Installation
+## 📦 Installation
 
 Clone the repository:
 
-```bash
-git clone https://github.com/your-username/x-dictionary.git
+```
+git clone https://github.com/your-username/spell-checker-app.git
 ```
 
-Navigate to the project folder:
+Go to the project folder:
 
-```bash
-cd x-dictionary
+```
+cd spell-checker-app
 ```
 
 Install dependencies:
 
-```bash
+```
 npm install
 ```
 
-Run the development server:
+Run the project:
 
-```bash
+```
 npm run dev
 ```
 
----
+## 🎯 Future Improvements
 
-## 💻 How It Works
-
-1. The application loads dictionary data from a **mock API (local array)**.
-2. A **custom React hook (`useDictionary`)** handles:
-   - Fetching data
-   - Loading state
-   - Error handling
-
-3. Users can type a word into the search input.
-4. The app filters the dictionary and displays the matching meaning.
+- Add a larger dictionary
+- Highlight incorrect words
+- Support multiple languages
+- Add suggestion dropdown for corrections
 
 ---
 
-## 🔍 Example
-
-Search input:
-
-```
-React
-```
-
-Result:
-
-```
-A JavaScript library for building user interfaces.
-```
-
----
-
-## 📸 Future Improvements
-
-- Add more dictionary terms
-- Add debounce search for better performance
-- Connect to a real dictionary API
-- Improve UI with styling frameworks
-
----
-
-## 👨‍💻 Author
-
-**Subroto Chakraborty**
-
-Frontend Developer specializing in **React, TypeScript, and modern web technologies**.
-# XDictionary
-# XSpellCheck
+Made with ❤️ using React and TypeScript.

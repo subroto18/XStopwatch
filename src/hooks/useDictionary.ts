@@ -3,20 +3,12 @@ import { dictionary } from "../mockData/dictionary";
 import type { DictionaryItemProps } from "../types";
 
 const useDictionary = () => {
-  const [data, setData] = useState<DictionaryItemProps[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [data, setData] = useState<DictionaryItemProps>({});
+  const [misspelled, setMisspelled] = useState("");
 
   useEffect(() => {
     const fetchDictionary = async () => {
-      try {
-        setData(dictionary);
-      } catch (err: unknown) {
-        console.log(err);
-        setError("Failed to fetch dictionary");
-      } finally {
-        setLoading(false);
-      }
+      setData(dictionary);
     };
 
     fetchDictionary();
@@ -25,12 +17,22 @@ const useDictionary = () => {
   const getWord = (searchTerm: string) => {
     if (!searchTerm) return data;
 
-    return data.filter((item) =>
-      item.word.toLowerCase().includes(searchTerm.toLowerCase()),
-    );
+    let found = "";
+
+    for (const word of searchTerm.split(" ")) {
+      if (data[word.toLocaleLowerCase()]) {
+        found = data[word.toLocaleLowerCase()];
+        break;
+      }
+    }
+
+    if (found) {
+      setMisspelled(found);
+    }
+    return found;
   };
 
-  return { data, loading, error, getWord };
+  return { data, getWord, misspelled };
 };
 
 export default useDictionary;
