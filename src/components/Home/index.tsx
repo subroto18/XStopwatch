@@ -72,8 +72,8 @@ const Index = () => {
         <p className={Styles.selectedText}>
           You selected{" "}
           <span className={Styles.selectedCountry}>{selectedCountry}, </span>
-          <span className={Styles.selectedState}>
-            {selectedState}, {selectedCity}
+          <span className={Styles.selectedCity}>
+            {selectedState}, {selectedCountry}
           </span>
         </p>
       )}

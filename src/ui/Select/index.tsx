@@ -20,7 +20,7 @@ const index = ({ id, options, label, onChange, disabled, value }: Props) => {
         disabled={disabled}
         value={value}
       >
-        <option key={"select"} value="" selected disabled>
+        <option key="1" value="" selected disabled>
           {label || "Select"}
         </option>
 
