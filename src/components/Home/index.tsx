@@ -1,82 +1,46 @@
+import { useEffect, useState } from "react";
+import Button from "../../ui/Button";
 import Layout from "../common/Layout";
-import Select from "../../ui/Select";
-import useCountry from "../../hooks/useCountry";
-import Styles from "./Home.module.css";
-import { useState } from "react";
-import useStates from "../../hooks/useStates";
-import useCity from "../../hooks/useCity";
 
 const Index = () => {
-  const { loading, countries, error } = useCountry();
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [selectedState, setSelectedState] = useState("");
-  const [selectedCity, setSelectedCity] = useState("");
-  const {
-    loading: stateLoading,
-    states,
-    error: stateError,
-  } = useStates(selectedCountry);
+  const [seconds, setSeconds] = useState(0);
+  const [running, setRunning] = useState(false);
 
-  const {
-    loading: cityLoading,
-    cities,
-    error: cityError,
-  } = useCity(selectedCountry, selectedState);
+  useEffect(() => {
+    let timer: number;
+    if (running) {
+      timer = setInterval(() => {
+        setSeconds((prev) => {
+          return prev + 1;
+        });
+      }, 1000);
+    }
 
-  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCountry(e.target.value);
-    setSelectedState("");
-    setSelectedCity("");
+    return () => clearInterval(timer);
+  }, [running]);
+  const min = Math.floor(seconds / 60);
+  const sec = seconds % 60;
+
+  const handleReset = () => {
+    setSeconds(0);
+    setRunning(false);
   };
-
-  const handleStateChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedState(e.target.value);
-    setSelectedCity("");
-  };
-
-  const handleCityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCity(e.target.value);
+  const handleStart = () => {
+    setRunning(!running);
   };
 
   return (
     <Layout>
-      <div className={Styles.container}>
-        <Select
-          id="country"
-          label="Select Country"
-          value={selectedCountry}
-          onChange={handleCountryChange}
-          disabled={loading && error ? true : false}
-          options={countries}
+      <div>
+        <p>
+          Timer: {min}:{sec < 10 ? `0${sec}` : sec}
+        </p>
+        <Button
+          onClick={handleStart}
+          label={(seconds || seconds == 0) && !running ? "Start" : "Stop"}
         />
-
-        <Select
-          id="state"
-          label="Select State"
-          value={selectedState}
-          onChange={handleStateChange}
-          disabled={stateLoading && stateError ? true : false}
-          options={selectedCountry ? states : []}
-        />
-
-        <Select
-          id="city"
-          label="Select City"
-          value={selectedCity}
-          onChange={handleCityChange}
-          disabled={cityLoading && cityError ? true : false}
-          options={selectedState ? cities : []}
-        />
+        <Button onClick={handleReset} label="Reset" />
       </div>
-      {selectedCountry && selectedState && selectedCity && (
-        <span className={Styles.selectedText}>
-          You selected{" "}
-          <span className={Styles.selectedCountry}>{selectedCity}</span>,{" "}
-          <span className={Styles.selectedState}>
-            {selectedState}, {selectedCountry}
-          </span>
-        </span>
-      )}
     </Layout>
   );
 };

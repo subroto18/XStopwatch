@@ -6,7 +6,7 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
-const TITLE = "Select Location";
+const TITLE = "Stopwatch";
 
 const Layout = ({ children }: LayoutProps) => {
   return (
