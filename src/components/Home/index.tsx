@@ -33,7 +33,7 @@ const Index = () => {
     <Layout>
       <div>
         <p>
-          Timer: {min}:{sec < 10 ? `0${sec}` : sec}
+          Time: {min}:{sec < 10 ? `0${sec}` : sec}
         </p>
         <Button
           onClick={handleStart}
