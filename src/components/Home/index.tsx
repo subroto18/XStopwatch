@@ -31,7 +31,7 @@ const Index = () => {
 
   const handleStateChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedState(e.target.value);
-    setSelectedState("");
+    setSelectedCity("");
   };
 
   const handleCityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
