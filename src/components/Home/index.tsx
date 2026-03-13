@@ -44,6 +44,7 @@ const Index = () => {
         <Select
           id="country"
           label="Select Country"
+          value={selectedCountry}
           onChange={handleCountryChange}
           disabled={loading && error ? true : false}
           options={countries}
@@ -52,6 +53,7 @@ const Index = () => {
         <Select
           id="state"
           label="Select State"
+          value={selectedState}
           onChange={handleStateChange}
           disabled={stateLoading && stateError ? true : false}
           options={states}
@@ -60,6 +62,7 @@ const Index = () => {
         <Select
           id="city"
           label="Select City"
+          value={selectedCity}
           onChange={handleCityChange}
           disabled={cityLoading && cityError ? true : false}
           options={cities}
